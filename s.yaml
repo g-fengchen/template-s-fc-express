@@ -6,7 +6,7 @@ vars:
   region: "cn-hangzhou"
   service:
     name: "serverless-cd-demo"
-    description: 'Serverless Devs Web Framework Services'
+    description: 'Serverless Devs Web Framework Service'
 
 services:
   framework:
