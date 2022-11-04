@@ -1,16 +1,18 @@
-name: "Deploy Express application to FC"
+name: On Push master
 triggers:
   github:
     secret: test
     events:
-      - eventName: "push"
-        filter: 'body.ref in ["refs/heads/master"]'
+      - eventName: push
+env:
+  name: Heimanba
+  age: 30
 steps:
-  - run: npm i @serverless-devs/s -g
-  - run: s -v
-  - run: echo ${{secrets.SIMPLE_ALIYUN_ACCOUNTID}}
-  - run: echo ${{secrets.SIMPLE_ALIYUN_AK}}
-  - run: echo ${{secrets.SIMPLE_ALIYUN_SK}}
-  - run: s config add --AccountID ${{secrets.SIMPLE_ALIYUN_ACCOUNTID}}  --AccessKeyID ${{secrets.SIMPLE_ALIYUN_AK}}  --AccessKeySecret ${{secrets.SIMPLE_ALIYUN_SK}} -a default -f
-  - run: s deploy --use-local -y
-    working-directory: /tmp/code
+  - run: echo 'Hi {{ env.name }}'
+  - run: echo 'Hi {{ env.name }}'
+    env:
+      name: Tony
+  - run: echo 'Hi {{ task_id }}'
+  - run: echo 'Hi {{ app.user_name }}'
+  - run: echo 'Hi {{ git.event_name }}'
+  - run: echo 'suceess end'
